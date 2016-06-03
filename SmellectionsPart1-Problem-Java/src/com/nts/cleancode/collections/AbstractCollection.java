@@ -56,5 +56,25 @@ public abstract class AbstractCollection  {
 		size--;
 		elements = newElements;
 	}
+
+	protected void grow() {
+		Object[] newElements =
+			new Object[elements.length + INITIAL_CAPACITY];
+		for (int i = 0; i < size; i++)
+			newElements[i] = elements[i];
+		elements = newElements;
+	}
+
+	protected boolean shouldGrow() {
+		return (size + 1) > elements.length;
+	}
+
+	protected void addElement(Object element) {
+		elements[size++] = element;
+	}
+
+	public void setReadOnly(boolean b) {
+		readOnly = b;
+	}
 	
 }
