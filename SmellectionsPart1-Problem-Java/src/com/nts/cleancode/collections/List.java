@@ -13,14 +13,18 @@ public class List extends AbstractCollection {
 		if (!readOnly) {
 			int newSize = size + 1;
 			if (newSize > elements.length) {
-				Object[] newElements =
-					new Object[elements.length + 10];
-				for (int i = 0; i < size; i++)
-					newElements[i] = elements[i];
-				elements = newElements;
+				grow();
 			}
 			addElement(element);
 		}
+	}
+
+	private void grow() {
+		Object[] newElements =
+			new Object[elements.length + 10];
+		for (int i = 0; i < size; i++)
+			newElements[i] = elements[i];
+		elements = newElements;
 	}
 
 	private void addElement(Object element) {
