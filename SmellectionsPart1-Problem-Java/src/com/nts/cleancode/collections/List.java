@@ -10,13 +10,17 @@ public class List extends AbstractCollection {
 	}
 
 	public void add(Object element) {
-		if (!readOnly) {
-			int newSize = size + 1;
-			if (newSize > elements.length) {
-				grow();
-			}
-			addElement(element);
+		if (readOnly) {
+			return;
 		}
+		if (shoudlGrow()) {
+			grow();
+		}
+		addElement(element);
+	}
+
+	private boolean shoudlGrow() {
+		return (size + 1) > elements.length;
 	}
 
 	private void grow() {
