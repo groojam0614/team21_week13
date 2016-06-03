@@ -1,12 +1,7 @@
 package com.nts.cleancode.collections;
 
 public class Set extends AbstractCollection {
-	private int size = 0;
 	private boolean readOnly;
-
-	public boolean isEmpty() {
-		return size == 0;
-	}
 
 	public void add(Object element) {
 		if (!readOnly) {
@@ -23,17 +18,6 @@ public class Set extends AbstractCollection {
 				return;
 			elements[size++] = element;
 		}
-	}
-
-	public boolean contains(Object element) {
-		for (int i = 0; i < size; i++)
-			if (elements[i].equals(element))
-				return true;
-		return false;
-	}
-
-	public int size() {
-		return size;
 	}
 
 	public boolean remove(Object element) {
@@ -55,7 +39,7 @@ public class Set extends AbstractCollection {
 		return false;
 	}
 
-	public void addAll(List l) {
+	public void addAll(AbstractCollection l) {
 		for (int i = 0; i < l.size(); i++) {
 			if (!contains(l.get(i)))
 				elements[size++] = l.get(i);

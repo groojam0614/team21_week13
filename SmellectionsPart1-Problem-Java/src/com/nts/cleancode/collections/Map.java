@@ -36,6 +36,7 @@ public class Map {
 		}
 	}
 
+
 	public int size() {
 		return size;
 	}
