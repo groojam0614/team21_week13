@@ -3,21 +3,11 @@ package com.nts.cleancode.collections;
 public abstract class AbstractCollection  {
 	protected static int INITIAL_CAPACITY = 10;
 	protected Object[] elements = new Object[INITIAL_CAPACITY];
-	public void addAll(AbstractCollection c) {
-		if (c instanceof Set) {
-			AbstractCollection s = (AbstractCollection)c;
-			for (int i=0; i < s.size(); i++) {
-				if (!contains(s.get(i))) {
-					add(s.get(i));
-				}
-			}
-			
-		} else if (c instanceof List) {
-			List l = (List)c;
-			for (int i=0; i < l.size(); i++) {
-				if (!contains(l.get(i))) {
-					add(l.get(i));
-				}
+	
+	public void addAll(AbstractCollection collection) {
+		for (int i=0; i < collection.size(); i++) {
+			if (!contains(collection.get(i))) {
+				add(collection.get(i));
 			}
 		}
 	}
