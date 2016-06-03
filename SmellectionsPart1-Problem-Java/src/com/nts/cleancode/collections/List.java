@@ -19,8 +19,12 @@ public class List extends AbstractCollection {
 					newElements[i] = elements[i];
 				elements = newElements;
 			}
-			elements[size++] = element;
+			addElement(element);
 		}
+	}
+
+	private void addElement(Object element) {
+		elements[size++] = element;
 	}
 
 	public boolean contains(Object element) {
