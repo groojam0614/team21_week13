@@ -57,7 +57,7 @@ public class Set extends AbstractCollection {
 		return false;
 	}
 
-	public Object getElementAt(int index) {
+	public Object get(int index) {
 		return elements[index];
 	}
 
