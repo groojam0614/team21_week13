@@ -14,7 +14,6 @@ public abstract class AbstractCollection  {
 		}
 	}
 	
-	public abstract void add(Object element);
 	public Object get(int index) {
 		return elements[index];
 	}
@@ -75,6 +74,20 @@ public abstract class AbstractCollection  {
 
 	public void setReadOnly(boolean b) {
 		readOnly = b;
+	}
+
+	public void add(Object element) {
+		if (readOnly) {
+			return;
+		}
+		if (shouldGrow()) {
+			grow();
+		}
+		addElement(element);
+	}
+
+	public int capacity() {
+		return elements.length;
 	}
 	
 }
